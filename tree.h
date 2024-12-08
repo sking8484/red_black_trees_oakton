@@ -1,8 +1,8 @@
 #include <string>
-#include <vector>
 using namespace std;
 
-struct TreeNode {
+struct TreeNode
+{
   int info;
   TreeNode *parent;
   TreeNode *left;
@@ -10,15 +10,20 @@ struct TreeNode {
   string color;
 };
 
-class Tree {
+class Tree
+{
 public:
   Tree();
+  ~Tree();
   void VisualizeTree();
-  void LeftRotate(TreeNode* node);
-  void RightRotate(TreeNode* node);
+  void LeftRotate(TreeNode *node);
+  void RightRotate(TreeNode *node);
   void insert(int data);
-  void setRoot(TreeNode* node);
+  void remove(int value);
+  void search(int value);
 
 private:
   TreeNode *root;
+  void deleteTree(TreeNode *node);
+  void visualizeTreeHelper(string prefix, TreeNode *node, bool isLeft);
 };
