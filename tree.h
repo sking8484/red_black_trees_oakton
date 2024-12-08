@@ -1,6 +1,7 @@
 #include <string>
 using namespace std;
 
+
 struct TreeNode {
   int info;             // Holds the value of the node.
   TreeNode *parent;     // Pointer to the parent node.
@@ -9,7 +10,8 @@ struct TreeNode {
   string color;         // Color of the node (either "red" or "black").
 };
 
-class Tree {
+class Tree
+{
 public:
   // Constructor
   // Pre-condition: None.
