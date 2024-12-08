@@ -72,9 +72,9 @@ void visualizeTreeHelper(string prefix, TreeNode *node, bool isLeft) {
 
     // print the value of the node
     if (node->color == "red") {
-      std::cout << node->info << " " << node->color << std::endl;
+        std::cout << "\033[31m" << node->info << "\033[0m" << node->color << std::endl;
     } else {
-      cout << node->info << " " << node->color <<  std::endl;
+        std::cout << node->info << " " << node->color <<  std::endl;
     }
 
     // enter the next tree level - left and right branch
