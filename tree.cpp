@@ -72,9 +72,9 @@ void visualizeTreeHelper(string prefix, TreeNode *node, bool isLeft) {
 
     // print the value of the node
     if (node->color == "red") {
-      std::cout << "\033[31m" << node->info << "\033[0m" << std::endl;
+      std::cout << node->info << " " << node->color << std::endl;
     } else {
-      cout << node->info << std::endl;
+      cout << node->info << " " << node->color <<  std::endl;
     }
 
     // enter the next tree level - left and right branch
@@ -85,3 +85,55 @@ void visualizeTreeHelper(string prefix, TreeNode *node, bool isLeft) {
 }
 
 void Tree::VisualizeTree() { visualizeTreeHelper("", root, false); }
+
+void Tree::LeftRotate(TreeNode* node) {
+    TreeNode* nodeRight = node->right;
+    node->right = nodeRight->left;
+    
+    if (nodeRight->left != NULL) {
+        nodeRight->left->parent = node;
+    }
+    
+    nodeRight->parent = node->parent;
+    
+    if(node->parent == NULL) {
+        root = nodeRight;
+    } else if (node == node->parent->left) {
+        node->parent->left = nodeRight;
+    } else {
+        node->parent->right = nodeRight;
+    }
+    
+    nodeRight->left = node;
+    node->parent = nodeRight;
+}
+
+void Tree::RightRotate(TreeNode* node) {
+    TreeNode* nodeLeft = node->left;
+    node->left = nodeLeft->right;
+    
+    if (nodeLeft->right != NULL) {
+        nodeLeft->right->parent = node;
+    }
+    
+    nodeLeft->parent = node->parent;
+    
+    if (node->parent == NULL) {
+        root = nodeLeft;
+    } else if (node == node->parent->right) {
+        node->parent->right = nodeLeft;
+    } else {
+        node->parent->left = nodeLeft;
+    }
+    
+    nodeLeft->right = node;
+    node->parent = nodeLeft;
+}
+
+void Tree::insert(int info) {
+    
+    TreeNode* newNode = new TreeNode(info);
+    newNode->left = NULL;
+    newNode->right = NULL;
+        
+}

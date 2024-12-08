@@ -14,6 +14,10 @@ class Tree {
 public:
   Tree();
   void VisualizeTree();
+  void LeftRotate(TreeNode* node);
+  void RightRotate(TreeNode* node);
+  void insert(int data);
+  void setRoot(TreeNode* node);
 
 private:
   TreeNode *root;
